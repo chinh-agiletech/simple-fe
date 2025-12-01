@@ -5,6 +5,7 @@ import ForgotPassword from "../components/LoginPage/ForgotPassword";
 import Category from "../components/Dashboard/Category";
 import Dashboard from "../components/Dashboard";
 import DashboardHome from "../components/Dashboard/DashboardHome";
+import Settings from "../components/Dashboard/Settings";
 function Router() {
   const isAuthenticated = false;
   return (
@@ -48,10 +49,7 @@ function Router() {
               path="customers"
               element={<h1 className="text-2xl font-bold">Customers Page</h1>}
             />
-            <Route
-              path="settings"
-              element={<h1 className="text-2xl font-bold">Settings Page</h1>}
-            />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Route>
       </Routes>
