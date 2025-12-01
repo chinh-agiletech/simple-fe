@@ -17,29 +17,23 @@ interface CategoryData {
 
 export default function Category() {
   // Simplified modal management with custom hook
+  const initialCategories: CategoryData[] = [];
+
+  for (let i = 1; i <= 20; i++) {
+    initialCategories.push({
+      key: i.toString(),
+      name: `Category ${i}`,
+      description: `Description for category ${i}`,
+    });
+  }
   const modals = useModals(["create", "update", "delete"] as const);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<CategoryData | null>(
     null
   );
-  const [categories, setCategories] = useState<CategoryData[]>([
-    {
-      key: "1",
-      name: "Electronics",
-      description: "Electronic devices and accessories",
-    },
-    {
-      key: "2",
-      name: "Clothing",
-      description: "Fashion and apparel items",
-    },
-    {
-      key: "3",
-      name: "Books",
-      description: "Books and educational materials",
-    },
-  ]);
+  const [categories, setCategories] =
+    useState<CategoryData[]>(initialCategories);
 
   // Filter categories based on search query
   const filteredCategories = useMemo(() => {

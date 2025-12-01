@@ -44,3 +44,8 @@
 .ant-btn-primary:active {
   transform: translateY(0);
 }
+
+/* Center table pagination */
+.ant-table-pagination {
+  justify-content: center !important;
+}

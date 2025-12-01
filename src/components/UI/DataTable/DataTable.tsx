@@ -36,9 +36,7 @@ function DataTable<T extends object>({
       loading={loading}
       locale={{ emptyText: customEmpty }}
       pagination={{
-        showSizeChanger: true,
-        showTotal: (total, range) =>
-          `${range[0]}-${range[1]} of ${total} items`,
+        // showSizeChanger: true,
         defaultPageSize: 10,
         pageSizeOptions: ["10", "20", "50", "100"],
       }}
