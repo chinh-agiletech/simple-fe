@@ -1,18 +1,36 @@
 import { Button, Form, Input, Modal } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
+
+interface CategoryData {
+  key: string;
+  name: string;
+  description: string;
+}
 
 interface UpdateCategoryProps {
   open: boolean;
   onClose: () => void;
   onSubmit?: (values: { name: string; description: string }) => void;
+  categoryData?: CategoryData | null;
 }
 
 const UpdateCategory: React.FC<UpdateCategoryProps> = ({
   open,
   onClose,
   onSubmit,
+  categoryData,
 }) => {
   const [form] = Form.useForm();
+
+  // Fill form with category data when modal opens
+  useEffect(() => {
+    if (open && categoryData) {
+      form.setFieldsValue({
+        name: categoryData.name,
+        description: categoryData.description,
+      });
+    }
+  }, [open, categoryData, form]);
   const onFinish = (values: { name: string; description: string }) => {
     console.log("Form values:", values);
     if (onSubmit) {

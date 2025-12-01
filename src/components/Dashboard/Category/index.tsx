@@ -3,9 +3,11 @@ import DataTable from "../../UI/DataTable";
 import type { ColumnsType } from "antd/es/table";
 import { Button } from "antd";
 import CreationCategory from "./componnets/CreationCategory";
+import UpdateCategory from "./componnets/UpdateCategory";
 import SearchFilter from "../../UI/Filter";
 import { MdEdit, MdDelete } from "react-icons/md";
 import DeleteCategory from "./componnets/DeleteCategory";
+import { useModals } from "../../../hooks";
 
 interface CategoryData {
   key: string;
@@ -14,9 +16,13 @@ interface CategoryData {
 }
 
 export default function Category() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  // Simplified modal management with custom hook
+  const modals = useModals(["create", "update", "delete"] as const);
+
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<CategoryData | null>(
+    null
+  );
   const [categories, setCategories] = useState<CategoryData[]>([
     {
       key: "1",
@@ -63,11 +69,15 @@ export default function Category() {
       key: "actions",
       width: 100,
       align: "center" as const,
-      render: () => (
+      render: (_, record) => (
         <div className="flex gap-3 justify-center">
           <button
             className="p-2 hover:bg-blue-50 rounded-lg transition-all duration-200 group"
             title="Edit"
+            onClick={() => {
+              setSelectedCategory(record);
+              modals.update.open();
+            }}
           >
             <MdEdit
               className="text-blue-600 group-hover:scale-110 transition-transform"
@@ -77,7 +87,7 @@ export default function Category() {
           <button
             className="p-2 hover:bg-red-50 rounded-lg transition-all duration-200 group"
             title="Delete"
-            onClick={handleOpenDeleteModal}
+            onClick={modals.delete.open}
           >
             <MdDelete
               className="text-red-600 group-hover:scale-110 transition-transform"
@@ -89,22 +99,6 @@ export default function Category() {
     },
   ];
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOpenDeleteModal = () => {
-    setOpenDeleteModal(true);
-  };
-
-  const handleDelete = () => {
-    setOpenDeleteModal(false);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
   const handleSubmit = (values: { name: string; description: string }) => {
     console.log("New category:", values);
     // Add new category to the list
@@ -114,6 +108,20 @@ export default function Category() {
       description: values.description,
     };
     setCategories([...categories, newCategory]);
+  };
+
+  const handleUpdate = (values: { name: string; description: string }) => {
+    console.log("Update category:", values);
+    if (selectedCategory) {
+      // Update the category in the list
+      setCategories(
+        categories.map((cat) =>
+          cat.key === selectedCategory.key
+            ? { ...cat, name: values.name, description: values.description }
+            : cat
+        )
+      );
+    }
   };
 
   return (
@@ -139,7 +147,7 @@ export default function Category() {
           <Button
             type="primary"
             size="large"
-            onClick={handleOpenModal}
+            onClick={modals.create.open}
             className="bg-blue-600 hover:bg-blue-700 h-[40px] rounded-full w-full sm:w-auto"
           >
             + Add new
@@ -157,14 +165,24 @@ export default function Category() {
         />
       </div>
 
-      {/* Create Category Modal */}
+      {/* Modals - Clean and simple */}
       <CreationCategory
-        open={isModalOpen}
-        onClose={handleCloseModal}
+        open={modals.create.isOpen}
+        onClose={modals.create.close}
         onSubmit={handleSubmit}
       />
 
-      <DeleteCategory open={openDeleteModal} onClose={handleDelete} />
+      <UpdateCategory
+        open={modals.update.isOpen}
+        onClose={modals.update.close}
+        onSubmit={handleUpdate}
+        categoryData={selectedCategory}
+      />
+
+      <DeleteCategory
+        open={modals.delete.isOpen}
+        onClose={modals.delete.close}
+      />
     </div>
   );
 }
