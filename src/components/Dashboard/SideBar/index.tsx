@@ -11,6 +11,7 @@ import {
   MdChevronRight,
   MdLogout,
 } from "react-icons/md";
+import ModalLogOut from "../ModalLogOut";
 
 interface MenuItem {
   id: string;
@@ -62,6 +63,7 @@ const menuItems: MenuItem[] = [
 export default function SideBar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [expandedMenus, setExpandedMenus] = useState<string[]>([]);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -90,6 +92,21 @@ export default function SideBar() {
 
   const isActive = (path: string) => {
     return location.pathname === path;
+  };
+
+  const handleLogoutClick = () => {
+    setIsLogoutModalOpen(true);
+  };
+
+  const handleLogoutConfirm = () => {
+    setIsLogoutModalOpen(false);
+    // Add your logout logic here
+    console.log("User logged out");
+    navigate("/login");
+  };
+
+  const handleLogoutCancel = () => {
+    setIsLogoutModalOpen(false);
   };
 
   return (
@@ -226,6 +243,7 @@ export default function SideBar() {
       {/* Footer */}
       <div className="p-4 border-t border-slate-700/50 backdrop-blur-sm">
         <button
+          onClick={handleLogoutClick}
           className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 hover:bg-red-500/10 text-red-400 hover:text-red-300 group
             ${isCollapsed ? "justify-center" : ""}
           `}
@@ -238,6 +256,13 @@ export default function SideBar() {
           {!isCollapsed && <span className="font-medium text-sm">Logout</span>}
         </button>
       </div>
+
+      {/* Logout Modal */}
+      <ModalLogOut
+        open={isLogoutModalOpen}
+        onClose={handleLogoutCancel}
+        onConfirm={handleLogoutConfirm}
+      />
     </div>
   );
 }
