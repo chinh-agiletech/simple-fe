@@ -119,29 +119,33 @@ export default function Category() {
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      {/* Header & Controls */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-900">
             Category Management
           </h1>
         </div>
-        <div className="">
-          <SearchFilter
-            placeholder="Search categories by name or description..."
-            onSearch={setSearchQuery}
+
+        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <div className="w-full md:w-72">
+            <SearchFilter
+              placeholder="Search..."
+              onSearch={setSearchQuery}
+              size="large"
+              className="w-full"
+            />
+          </div>
+          <Button
+            type="primary"
             size="large"
-            className="flex-1"
-          />
+            onClick={handleOpenModal}
+            className="bg-blue-600 hover:bg-blue-700 h-[40px] rounded-full w-full sm:w-auto"
+          >
+            + Add new
+          </Button>
         </div>
       </div>
-      <Button
-        type="primary"
-        size="large"
-        onClick={handleOpenModal}
-        className="bg-blue-600 hover:bg-blue-700 h-[40px] rounded-full!"
-      >
-        + Add new
-      </Button>
       {/* Table */}
       <div className="bg-linear-to-br from-slate-50 to-slate-100 rounded-lg shadow-sm border border-slate-200">
         <DataTable<CategoryData>
@@ -149,6 +153,7 @@ export default function Category() {
           dataSource={filteredCategories}
           emptyText="No Categories Found"
           emptyDescription="Start by adding your first category"
+          scroll={{ x: 800 }}
         />
       </div>
 
