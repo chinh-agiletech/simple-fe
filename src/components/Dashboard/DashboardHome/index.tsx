@@ -1,9 +1,9 @@
 import React from "react";
 import {
-  MdTrendingUp,
-  MdShoppingCart,
-  MdPeople,
-  MdAttachMoney,
+  MdConstruction,
+  MdBusiness,
+  MdInventory2,
+  MdWarehouse,
 } from "react-icons/md";
 
 interface StatCardProps {
@@ -53,36 +53,36 @@ function StatCard({
 export default function DashboardHome() {
   const stats = [
     {
-      title: "Total Revenue",
-      value: "$45,231",
-      change: "12.5%",
+      title: "Giá trị vật tư",
+      value: "2.5 tỷ",
+      change: "15.3%",
       isPositive: true,
-      icon: <MdAttachMoney size={28} />,
-      color: "bg-linear-to-br from-green-500 to-emerald-600",
+      icon: <MdInventory2 size={28} />,
+      color: "bg-linear-to-br from-orange-500 to-orange-600",
     },
     {
-      title: "Total Orders",
-      value: "1,234",
+      title: "Dự án đang thực hiện",
+      value: "24",
       change: "8.2%",
       isPositive: true,
-      icon: <MdShoppingCart size={28} />,
+      icon: <MdConstruction size={28} />,
       color: "bg-linear-to-br from-blue-500 to-blue-600",
     },
     {
-      title: "Total Customers",
-      value: "892",
-      change: "3.1%",
-      isPositive: false,
-      icon: <MdPeople size={28} />,
-      color: "bg-linear-to-br from-purple-500 to-purple-600",
+      title: "Nhà cung cấp",
+      value: "48",
+      change: "5.1%",
+      isPositive: true,
+      icon: <MdBusiness size={28} />,
+      color: "bg-linear-to-br from-slate-500 to-slate-600",
     },
     {
-      title: "Growth Rate",
-      value: "23.5%",
-      change: "4.3%",
+      title: "Mức độ tồn kho",
+      value: "87.5%",
+      change: "3.2%",
       isPositive: true,
-      icon: <MdTrendingUp size={28} />,
-      color: "bg-linear-to-br from-orange-500 to-orange-600",
+      icon: <MdWarehouse size={28} />,
+      color: "bg-linear-to-br from-green-500 to-green-600",
     },
   ];
 
@@ -91,13 +91,15 @@ export default function DashboardHome() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">Dashboard</h1>
+          <h1 className="text-3xl font-bold text-slate-900">
+            Tổng quan vật tư
+          </h1>
           <p className="text-slate-600 mt-1">
-            Welcome back! Here's what's happening today.
+            Quản lý vật tư xây dựng hiệu quả và chuyên nghiệp
           </p>
         </div>
-        <button className="px-4 py-2 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105">
-          Download Report
+        <button className="px-4 py-2 bg-linear-to-r from-orange-600 to-orange-500 text-white rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105">
+          Xuất báo cáo
         </button>
       </div>
 
@@ -108,64 +110,66 @@ export default function DashboardHome() {
         ))}
       </div>
 
-      {/* Quick Actions */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">Quick Actions</h2>
+        <h2 className="text-xl font-bold text-slate-900 mb-4">
+          Thao tác nhanh
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <button className="p-4 border-2 border-slate-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-all duration-200 text-left group">
+            <div className="text-2xl mb-2">🧱</div>
+            <h3 className="font-semibold text-slate-900 group-hover:text-orange-600">
+              Thêm vật tư
+            </h3>
+            <p className="text-sm text-slate-600 mt-1">
+              Nhập vật tư xây dựng mới
+            </p>
+          </button>
           <button className="p-4 border-2 border-slate-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 text-left group">
-            <div className="text-2xl mb-2">📦</div>
+            <div className="text-2xl mb-2">🏗️</div>
             <h3 className="font-semibold text-slate-900 group-hover:text-blue-600">
-              Add Product
+              Dự án mới
             </h3>
             <p className="text-sm text-slate-600 mt-1">
-              Create a new product listing
+              Tạo dự án xây dựng mới
             </p>
           </button>
-          <button className="p-4 border-2 border-slate-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all duration-200 text-left group">
-            <div className="text-2xl mb-2">📁</div>
-            <h3 className="font-semibold text-slate-900 group-hover:text-purple-600">
-              Add Category
+          <button className="p-4 border-2 border-slate-200 rounded-lg hover:border-slate-500 hover:bg-slate-50 transition-all duration-200 text-left group">
+            <div className="text-2xl mb-2">🏭</div>
+            <h3 className="font-semibold text-slate-900 group-hover:text-slate-600">
+              Nhà cung cấp
             </h3>
             <p className="text-sm text-slate-600 mt-1">
-              Organize your products
+              Đăng ký nhà cung cấp mới
             </p>
-          </button>
-          <button className="p-4 border-2 border-slate-200 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all duration-200 text-left group">
-            <div className="text-2xl mb-2">👥</div>
-            <h3 className="font-semibold text-slate-900 group-hover:text-green-600">
-              Add Customer
-            </h3>
-            <p className="text-sm text-slate-600 mt-1">Register new customer</p>
           </button>
         </div>
       </div>
 
-      {/* Recent Activity */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
         <h2 className="text-xl font-bold text-slate-900 mb-4">
-          Recent Activity
+          Hoạt động gần đây
         </h2>
         <div className="space-y-4">
           {[
             {
-              action: "New order received",
-              time: "2 minutes ago",
+              action: "Nhập vật tư xây dựng",
+              time: "5 phút trước",
+              color: "bg-orange-100 text-orange-600",
+            },
+            {
+              action: "Cập nhật dự án",
+              time: "20 phút trước",
               color: "bg-blue-100 text-blue-600",
             },
             {
-              action: "Product updated",
-              time: "15 minutes ago",
-              color: "bg-purple-100 text-purple-600",
+              action: "Thêm nhà cung cấp mới",
+              time: "1 giờ trước",
+              color: "bg-slate-100 text-slate-600",
             },
             {
-              action: "New customer registered",
-              time: "1 hour ago",
+              action: "Xuất kho vật tư",
+              time: "2 giờ trước",
               color: "bg-green-100 text-green-600",
-            },
-            {
-              action: "Category created",
-              time: "2 hours ago",
-              color: "bg-orange-100 text-orange-600",
             },
           ].map((activity, index) => (
             <div

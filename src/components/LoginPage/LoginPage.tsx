@@ -1,7 +1,12 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  LockOutlined,
+  SafetyOutlined,
+  ToolOutlined,
+} from "@ant-design/icons";
 
 export interface LoginPageProps {
   username: string;
@@ -31,10 +36,10 @@ export default function LoginPage() {
         {/* Header */}
         <div style={styles.header}>
           <div style={styles.iconWrapper}>
-            <UserOutlined style={styles.headerIcon} />
+            <SafetyOutlined style={styles.headerIcon} />
           </div>
-          <h1 style={styles.title}>Welcome Back</h1>
-          <p style={styles.subtitle}>Sign in to continue to your dashboard</p>
+          <h1 style={styles.title}>Construction Materials Portal</h1>
+          <p style={styles.subtitle}>Quản lý vật tư xây dựng chuyên nghiệp</p>
         </div>
 
         {/* Form */}
@@ -98,10 +103,12 @@ export default function LoginPage() {
 
         {/* Footer */}
         <div style={styles.footer}>
-          <p style={styles.footerText}>
-            Don't have an account?{" "}
-            <span style={styles.signupLink}>Sign up</span>
-          </p>
+          <div style={styles.constructionBadge}>
+            <ToolOutlined style={styles.badgeIcon} />
+            <span style={styles.badgeText}>
+              Hệ thống quản lý vật tư xây dựng
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -126,7 +133,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     right: 0,
     bottom: 0,
     background:
-      "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)",
+      "linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%)",
     zIndex: 0,
   },
   orb1: {
@@ -137,7 +144,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     height: "500px",
     borderRadius: "50%",
     background:
-      "radial-gradient(circle, rgba(102, 126, 234, 0.4) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, transparent 70%)",
     animation: "float 20s ease-in-out infinite",
     filter: "blur(60px)",
   },
@@ -149,7 +156,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     height: "600px",
     borderRadius: "50%",
     background:
-      "radial-gradient(circle, rgba(240, 147, 251, 0.4) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(234, 88, 12, 0.3) 0%, transparent 70%)",
     animation: "float 25s ease-in-out infinite reverse",
     filter: "blur(60px)",
   },
@@ -162,7 +169,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     height: "400px",
     borderRadius: "50%",
     background:
-      "radial-gradient(circle, rgba(118, 75, 162, 0.3) 0%, transparent 70%)",
+      "radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%)",
     animation: "pulse 15s ease-in-out infinite",
     filter: "blur(80px)",
   },
@@ -191,9 +198,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     width: "72px",
     height: "72px",
     borderRadius: "20px",
-    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
     marginBottom: "24px",
-    boxShadow: "0 8px 24px rgba(102, 126, 234, 0.4)",
+    boxShadow: "0 8px 24px rgba(249, 115, 22, 0.4)",
   },
   headerIcon: {
     fontSize: "36px",
@@ -234,7 +241,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontSize: "14px",
   },
   forgotLink: {
-    color: "#667eea",
+    color: "#f97316",
     fontSize: "14px",
     fontWeight: "500",
     cursor: "pointer",
@@ -245,9 +252,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     borderRadius: "12px",
     fontSize: "16px",
     fontWeight: "600",
-    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    background: "linear-gradient(135deg, #f97316 0%, #ea580c 100%)",
     border: "none",
-    boxShadow: "0 4px 16px rgba(102, 126, 234, 0.4)",
+    boxShadow: "0 4px 16px rgba(249, 115, 22, 0.4)",
     transition: "all 0.3s ease",
     marginTop: "8px",
   },
@@ -257,15 +264,24 @@ const styles: { [key: string]: React.CSSProperties } = {
     paddingTop: "24px",
     borderTop: "1px solid #e2e8f0",
   },
-  footerText: {
-    fontSize: "14px",
-    color: "#64748b",
-    margin: 0,
+  constructionBadge: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "8px",
+    padding: "12px 20px",
+    background:
+      "linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%)",
+    borderRadius: "8px",
+    border: "1px solid rgba(249, 115, 22, 0.2)",
   },
-  signupLink: {
-    color: "#667eea",
-    fontWeight: "600",
-    cursor: "pointer",
-    transition: "color 0.2s ease",
+  badgeIcon: {
+    fontSize: "18px",
+    color: "#f97316",
+  },
+  badgeText: {
+    fontSize: "13px",
+    color: "#475569",
+    fontWeight: "500",
   },
 };

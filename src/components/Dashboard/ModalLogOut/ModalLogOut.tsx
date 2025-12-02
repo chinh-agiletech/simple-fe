@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Button } from "antd";
-import { ExclamationCircleOutlined, LogoutOutlined } from "@ant-design/icons";
+import { LogoutOutlined } from "@ant-design/icons";
 
 interface ModalLogOutProps {
   open: boolean;
@@ -23,21 +23,11 @@ const ModalLogOut: React.FC<ModalLogOutProps> = ({
       closable={false}
     >
       <div className="text-center py-4">
-        {/* Icon */}
-        <div className="mb-4">
-          <ExclamationCircleOutlined
-            className="text-yellow-500"
-            style={{ fontSize: "48px" }}
-          />
-        </div>
-
-        {/* Title */}
         <h2 className="text-xl font-bold text-gray-900 mb-2">Confirm Logout</h2>
 
         {/* Message */}
         <p className="text-gray-600 mb-6">
-          Are you sure you want to logout? You will need to login again to
-          access your account.
+          Are you sure you want to logout?
         </p>
 
         {/* Buttons */}
