@@ -5,7 +5,7 @@ import {
   MdConstruction,
   MdMenu,
   MdChevronRight,
-  MdLogout
+  MdLogout,
 } from "react-icons/md";
 import ModalLogOut from "../ModalLogOut";
 import { menuItems, type MenuItem } from "./constant";
@@ -70,8 +70,9 @@ export default function SideBar() {
       {/* Header */}
       <div className="p-4 flex items-center justify-between border-b border-slate-200 bg-linear-to-r from-orange-50 to-white min-h-[72px]">
         <div
-          className={classNames("flex items-center gap-3", {
+          className={classNames("flex items-center", {
             "justify-center w-full": isCollapsed,
+            "gap-3": !isCollapsed,
           })}
         >
           <div
@@ -86,22 +87,16 @@ export default function SideBar() {
           >
             <MdConstruction className="text-xl text-white" />
           </div>
-          <div
-            className={classNames(
-              "flex flex-col overflow-hidden transition-all duration-300",
-              {
-                "w-0 opacity-0": isCollapsed,
-                "w-auto opacity-100": !isCollapsed,
-              }
-            )}
-          >
-            <span className="font-bold text-lg tracking-tight text-slate-800 whitespace-nowrap">
-              Vật Tư XD
-            </span>
-            <span className="text-xs text-slate-500 whitespace-nowrap">
-              Quản lý vật tư
-            </span>
-          </div>
+          {!isCollapsed && (
+            <div className="flex flex-col">
+              <span className="font-bold text-lg tracking-tight text-slate-800 whitespace-nowrap">
+                Vật Tư XD
+              </span>
+              <span className="text-xs text-slate-500 whitespace-nowrap">
+                Quản lý vật tư
+              </span>
+            </div>
+          )}
         </div>
         {!isCollapsed && (
           <button
@@ -121,12 +116,13 @@ export default function SideBar() {
               <button
                 onClick={() => handleMenuClick(item)}
                 className={classNames(
-                  "w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 group relative overflow-hidden",
+                  "w-full flex items-center rounded-lg transition-all duration-200 group relative overflow-hidden",
                   {
                     "bg-linear-to-r from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/20":
                       isActive(item.path),
                     "hover:bg-orange-50 text-slate-700": !isActive(item.path),
-                    "justify-center": isCollapsed,
+                    "justify-center px-3 py-3": isCollapsed,
+                    "gap-3 px-3 py-3": !isCollapsed,
                   }
                 )}
                 title={isCollapsed ? item.label : ""}
@@ -152,30 +148,28 @@ export default function SideBar() {
                 </span>
 
                 {/* Label */}
-                <span
-                  className={classNames(
-                    "flex-1 text-left font-medium text-sm overflow-hidden transition-all duration-300",
-                    {
-                      "text-white": isActive(item.path),
-                      "text-slate-700 group-hover:text-orange-600": !isActive(
-                        item.path
-                      ),
-                      "w-0 opacity-0": isCollapsed,
-                      "w-auto opacity-100": !isCollapsed,
-                    }
-                  )}
-                >
-                  <span className="whitespace-nowrap">{item.label}</span>
-                </span>
+                {!isCollapsed && (
+                  <span
+                    className={classNames(
+                      "flex-1 text-left font-medium text-sm whitespace-nowrap",
+                      {
+                        "text-white": isActive(item.path),
+                        "text-slate-700 group-hover:text-orange-600": !isActive(
+                          item.path
+                        ),
+                      }
+                    )}
+                  >
+                    {item.label}
+                  </span>
+                )}
 
                 {/* Chevron for submenu */}
-                {item.submenu && item.submenu.length > 0 && (
+                {item.submenu && item.submenu.length > 0 && !isCollapsed && (
                   <MdChevronRight
                     size={18}
                     className={classNames("transition-all duration-300", {
                       "rotate-90": expandedMenus.includes(item.id),
-                      "w-0 opacity-0": isCollapsed,
-                      "w-auto opacity-100": !isCollapsed,
                     })}
                   />
                 )}
@@ -225,9 +219,10 @@ export default function SideBar() {
         <button
           onClick={handleLogoutClick}
           className={classNames(
-            "w-full flex items-center cursor-pointer gap-3 px-3 py-3 rounded-lg transition-all duration-200 hover:bg-red-50 text-red-500 hover:text-red-600 group",
+            "w-full flex items-center cursor-pointer rounded-lg transition-all duration-200 hover:bg-red-50 text-red-500 hover:text-red-600 group",
             {
-              "justify-center": isCollapsed,
+              "justify-center px-3 py-3": isCollapsed,
+              "gap-3 px-3 py-3": !isCollapsed,
             }
           )}
           title={isCollapsed ? "Đăng xuất" : ""}
@@ -236,17 +231,11 @@ export default function SideBar() {
             size={22}
             className="group-hover:scale-110 transition-transform shrink-0"
           />
-          <span
-            className={classNames(
-              "font-medium text-sm overflow-hidden transition-all duration-300",
-              {
-                "w-0 opacity-0": isCollapsed,
-                "w-auto opacity-100": !isCollapsed,
-              }
-            )}
-          >
-            <span className="whitespace-nowrap">Đăng xuất</span>
-          </span>
+          {!isCollapsed && (
+            <span className="font-medium text-sm whitespace-nowrap">
+              Đăng xuất
+            </span>
+          )}
         </button>
       </div>
 
