@@ -3,7 +3,7 @@ import { Button, Modal } from "antd";
 export interface DelCategoryProps {
   open: boolean;
   onClose: () => void;
-  onSubmit?: (values: { name: string; description: string }) => void;
+  onSubmit?: () => void;
 }
 
 const DeleteCategory = ({ open, onClose, onSubmit }: DelCategoryProps) => {
@@ -13,14 +13,14 @@ const DeleteCategory = ({ open, onClose, onSubmit }: DelCategoryProps) => {
 
   const handleConfirmDelete = () => {
     if (onSubmit) {
-      onSubmit({ name: "", description: "" }); // You can pass actual data here
+      onSubmit();
     }
     onClose();
   };
 
   return (
     <Modal
-      title="Delete Category"
+      title="Xóa danh mục"
       open={open}
       onOk={handleCloseModal}
       onCancel={handleCloseModal}
@@ -30,7 +30,7 @@ const DeleteCategory = ({ open, onClose, onSubmit }: DelCategoryProps) => {
     >
       <div className="my-[20px]">
         <p className="text-slate-700">
-          Are you sure you want to delete this category?
+          Bạn có chắc chắn muốn xóa danh mục này không?
         </p>
       </div>
       <div className="flex justify-end gap-[8px]">
@@ -39,7 +39,7 @@ const DeleteCategory = ({ open, onClose, onSubmit }: DelCategoryProps) => {
           onClick={handleCloseModal}
           className="rounded-full h-[40px] px-6"
         >
-          No
+          Hủy
         </Button>
         <Button
           type="primary"
@@ -47,7 +47,7 @@ const DeleteCategory = ({ open, onClose, onSubmit }: DelCategoryProps) => {
           onClick={handleConfirmDelete}
           className="rounded-full h-[40px] px-6"
         >
-          Yes
+          Xóa
         </Button>
       </div>
     </Modal>

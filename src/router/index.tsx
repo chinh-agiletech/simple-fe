@@ -6,6 +6,7 @@ import Category from "../components/Dashboard/Category";
 import Dashboard from "../components/Dashboard";
 import DashboardHome from "../components/Dashboard/DashboardHome";
 import Settings from "../components/Dashboard/Settings";
+import InventoryPage from "../components/Dashboard/Inventory";
 function Router() {
   const isAuthenticated = false;
   return (
@@ -36,11 +37,8 @@ function Router() {
         >
           <Route element={<Dashboard />}>
             <Route index element={<DashboardHome />} />
+            <Route path="inventory" element={<InventoryPage />} />
             <Route path="category" element={<Category />} />
-            <Route
-              path="products"
-              element={<h1 className="text-2xl font-bold">Products Page</h1>}
-            />
             <Route
               path="orders"
               element={<h1 className="text-2xl font-bold">Orders Page</h1>}

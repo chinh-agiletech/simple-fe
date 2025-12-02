@@ -1,10 +1,16 @@
 import { Button, Form, Input, Modal } from "antd";
 import React from "react";
+import StatusSwitch from "../../../UI/Switch/StatusSwitch";
 
 export interface CreationCategoryProps {
   open: boolean;
   onClose: () => void;
-  onSubmit?: (values: { name: string; description: string }) => void;
+  onSubmit?: (values: {
+    code: string;
+    name: string;
+    description: string;
+    status: "active" | "inactive";
+  }) => void;
 }
 
 export default function CreationCategory({
@@ -14,7 +20,12 @@ export default function CreationCategory({
 }: CreationCategoryProps) {
   const [form] = Form.useForm();
 
-  const onFinish = (values: { name: string; description: string }) => {
+  const onFinish = (values: {
+    code: string;
+    name: string;
+    description: string;
+    status: "active" | "inactive";
+  }) => {
     console.log("Form values:", values);
     if (onSubmit) {
       onSubmit(values);
@@ -30,30 +41,49 @@ export default function CreationCategory({
 
   return (
     <Modal
-      title="Create Category"
+      title="Thêm danh mục mới"
       open={open}
       onCancel={handleCancel}
       footer={null}
       destroyOnClose
       centered
     >
-      <Form form={form} onFinish={onFinish} layout="vertical">
+      <Form
+        form={form}
+        onFinish={onFinish}
+        layout="vertical"
+        initialValues={{ status: "active" }}
+      >
+        <Form.Item
+          name="code"
+          label="Mã danh mục"
+          rules={[{ required: true, message: "Vui lòng nhập mã danh mục!" }]}
+        >
+          <Input placeholder="Nhập mã danh mục (VD: VLXD)" />
+        </Form.Item>
+
         <Form.Item
           name="name"
-          label="Name"
-          rules={[{ required: true, message: "Please input category name!" }]}
+          label="Tên danh mục"
+          rules={[{ required: true, message: "Vui lòng nhập tên danh mục!" }]}
         >
-          <Input placeholder="Enter category name" />
+          <Input placeholder="Nhập tên danh mục" />
         </Form.Item>
-        <Form.Item name="description" label="Description">
-          <Input.TextArea placeholder="Enter category description" rows={4} />
+
+        <Form.Item name="description" label="Mô tả">
+          <Input.TextArea placeholder="Nhập mô tả danh mục" rows={4} />
         </Form.Item>
-        <div className="w-full flex justify-between">
+
+        <Form.Item name="status" label="Trạng thái" valuePropName="status">
+          <StatusSwitch status="active" />
+        </Form.Item>
+
+        <div className="w-full flex justify-end gap-3">
           <Button onClick={handleCancel} className="h-[40px]">
-            Cancel
+            Hủy
           </Button>
           <Button type="primary" htmlType="submit" className="h-[40px]">
-            Submit
+            Thêm mới
           </Button>
         </div>
       </Form>
