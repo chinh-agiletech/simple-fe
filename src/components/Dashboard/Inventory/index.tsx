@@ -9,7 +9,7 @@ import {
   MdDelete,
   MdRemoveRedEye,
 } from "react-icons/md";
-import StatusFilter from "./components/StatusFilter";
+import FilterSelect from "../../UI/Filter/FilterSelect";
 import ViewInventoryModal from "./components/ViewInventoryModal";
 import FormInventoryModal from "./components/FormInventoryModal";
 import DeleteInventoryModal from "./components/DeleteInventoryModal";
@@ -101,6 +101,8 @@ const mockData: InventoryItem[] = [
 export default function InventoryPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState<string>("all");
+  const [filterCategory, setFilterCategory] = useState<string>("all");
+  const [filterWarehouse, setFilterWarehouse] = useState<string>("all");
 
   // Modal states
   const [viewModal, setViewModal] = useState<{
@@ -119,13 +121,41 @@ export default function InventoryPage() {
     item: InventoryItem | null;
   }>({ isOpen: false, item: null });
 
+  // Compute unique options
+  const categories = Array.from(new Set(mockData.map((item) => item.category)));
+  const locations = Array.from(new Set(mockData.map((item) => item.location)));
+
+  const categoryOptions = [
+    { value: "all", label: "Tất cả danh mục" },
+    ...categories.map((c) => ({ value: c, label: c })),
+  ];
+
+  const locationOptions = [
+    { value: "all", label: "Tất cả kho" },
+    ...locations.map((l) => ({ value: l, label: l })),
+  ];
+
+  const statusOptions = [
+    { value: "all", label: "Tất cả trạng thái" },
+    { value: "in-stock", label: "Còn hàng" },
+    { value: "low-stock", label: "Sắp hết" },
+    { value: "out-of-stock", label: "Hết hàng" },
+  ];
+
   const filteredData = mockData.filter((item) => {
     const matchesSearch =
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.sku.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter =
+    const matchesStatus =
       filterStatus === "all" || item.status === filterStatus;
-    return matchesSearch && matchesFilter;
+    const matchesCategory =
+      filterCategory === "all" || item.category === filterCategory;
+    const matchesWarehouse =
+      filterWarehouse === "all" || item.location === filterWarehouse;
+
+    return (
+      matchesSearch && matchesStatus && matchesCategory && matchesWarehouse
+    );
   });
 
   const getStatusBadge = (status: string) => {
@@ -287,9 +317,7 @@ export default function InventoryPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">
-            Quản lý vật tư
-          </h1>
+          <h1 className="text-3xl font-bold text-slate-900">Quản lý vật tư</h1>
           <p className="text-slate-600 mt-1">
             Theo dõi và quản lý vật tư xây dựng trong kho
           </p>
@@ -325,7 +353,29 @@ export default function InventoryPage() {
               className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             />
           </div>
-          <StatusFilter value={filterStatus} onChange={setFilterStatus} />
+          <div className="flex flex-col sm:flex-row gap-3">
+            <FilterSelect
+              value={filterCategory}
+              onChange={setFilterCategory}
+              options={categoryOptions}
+              placeholder="Danh mục"
+              className="w-full sm:w-48"
+            />
+            <FilterSelect
+              value={filterWarehouse}
+              onChange={setFilterWarehouse}
+              options={locationOptions}
+              placeholder="Kho hàng"
+              className="w-full sm:w-48"
+            />
+            <FilterSelect
+              value={filterStatus}
+              onChange={setFilterStatus}
+              options={statusOptions}
+              placeholder="Trạng thái"
+              className="w-full sm:w-48"
+            />
+          </div>
         </div>
       </div>
 

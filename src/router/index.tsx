@@ -7,6 +7,7 @@ import Dashboard from "../components/Dashboard";
 import DashboardHome from "../components/Dashboard/DashboardHome";
 import Settings from "../components/Dashboard/Settings";
 import InventoryPage from "../components/Dashboard/Inventory";
+import WarehousePage from "../components/Dashboard/Warehouse";
 function Router() {
   const isAuthenticated = false;
   return (
@@ -39,6 +40,7 @@ function Router() {
             <Route index element={<DashboardHome />} />
             <Route path="inventory" element={<InventoryPage />} />
             <Route path="category" element={<Category />} />
+            <Route path="warehouse" element={<WarehousePage />} />
             <Route
               path="orders"
               element={<h1 className="text-2xl font-bold">Orders Page</h1>}

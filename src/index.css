@@ -49,3 +49,7 @@
 .ant-table-pagination {
   justify-content: center !important;
 }
+
+button{
+  cursor: pointer;
+}

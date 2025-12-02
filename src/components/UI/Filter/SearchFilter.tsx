@@ -62,7 +62,7 @@ export default function SearchFilter({
             </button>
           ) : null
         }
-        className="rounded-lg"
+        className="rounded-full"
       />
     </div>
   );

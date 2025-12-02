@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   MdDashboard,
-  MdInventory,
   MdConstruction,
   MdSettings,
   MdMenu,
@@ -12,6 +11,7 @@ import {
   MdBusiness,
   MdOutlineInventory2,
   MdOutlineCategory,
+  MdWarehouse,
 } from "react-icons/md";
 import ModalLogOut from "../ModalLogOut";
 
@@ -43,10 +43,10 @@ const menuItems: MenuItem[] = [
     path: "/dashboard/category",
   },
   {
-    id: "inventory",
+    id: "warehouse",
     label: "Kho hàng",
-    icon: <MdInventory size={22} />,
-    path: "/dashboard/",
+    icon: <MdWarehouse size={22} />,
+    path: "/dashboard/warehouse",
   },
   {
     id: "projects",
