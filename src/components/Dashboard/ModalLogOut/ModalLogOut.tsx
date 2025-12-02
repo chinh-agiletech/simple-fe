@@ -1,6 +1,6 @@
 import React from "react";
-import { Modal, Button } from "antd";
-import { LogoutOutlined } from "@ant-design/icons";
+import { Modal } from "antd";
+import ButtonCus from "../../UI/ButtonCus/ButtonCus";
 
 interface ModalLogOutProps {
   open: boolean;
@@ -21,30 +21,26 @@ const ModalLogOut: React.FC<ModalLogOutProps> = ({
       centered
       width={400}
       closable={false}
+      title="Logout"
     >
-      <div className="text-center py-4">
-        <h2 className="text-xl font-bold text-gray-900 mb-2">Confirm Logout</h2>
-
-        {/* Message */}
-        <p className="text-gray-600 mb-6">
+      <div className="">
+        <p className="text-gray-600 text-[16px] p-[8px]">
           Are you sure you want to logout?
         </p>
 
-        {/* Buttons */}
-        <div className="flex gap-3 justify-center">
-          <Button onClick={onClose} size="large" className="min-w-[100px]">
-            Cancel
-          </Button>
-          <Button
-            type="primary"
-            danger
-            onClick={onConfirm}
-            size="large"
-            icon={<LogoutOutlined />}
-            className="min-w-[100px]"
+        <div className="flex gap-3 justify-between">
+          <ButtonCus
+            onClick={onClose}
+            className="max-w-[80px]! border border-outline text-black! hover:shadow-amber-500! hover:scale-110!"
+            styles={{
+              background: "white",
+            }}
           >
+            Cancel
+          </ButtonCus>
+          <ButtonCus onClick={onConfirm} className="max-w-[80px]!">
             Logout
-          </Button>
+          </ButtonCus>
         </div>
       </div>
     </Modal>

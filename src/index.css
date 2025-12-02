@@ -26,15 +26,6 @@
   }
 }
 
-/* Input focus effects */
-.ant-input:focus,
-.ant-input-password:focus,
-.ant-input-affix-wrapper:focus,
-.ant-input-affix-wrapper-focused {
-  border-color: #667eea !important;
-  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1) !important;
-}
-
 /* Button hover effects */
 .ant-btn-primary:hover {
   transform: translateY(-2px);
@@ -48,8 +39,4 @@
 /* Center table pagination */
 .ant-table-pagination {
   justify-content: center !important;
-}
-
-button{
-  cursor: pointer;
 }

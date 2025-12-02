@@ -15,6 +15,7 @@ import FormInventoryModal from "./components/FormInventoryModal";
 import DeleteInventoryModal from "./components/DeleteInventoryModal";
 import DataTable from "../../UI/DataTable/DataTable";
 import type { ColumnsType } from "antd/es/table";
+import ButtonCus from "../../UI/ButtonCus/ButtonCus";
 
 interface InventoryItem {
   id: string;
@@ -327,13 +328,14 @@ export default function InventoryPage() {
             <MdFileDownload size={20} />
             Xuất Excel
           </button>
-          <button
+          <ButtonCus
+            type="primary"
             onClick={handleCreate}
-            className="px-4 py-2 bg-linear-to-r from-orange-500 to-orange-600 text-white rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105 flex items-center gap-2"
+            className="w-full sm:w-auto flex items-center gap-[8px]"
           >
             <MdAdd size={20} />
-            Thêm vật tư
-          </button>
+            <span className="pr-[8px]">Thêm mới</span>
+          </ButtonCus>
         </div>
       </div>
 

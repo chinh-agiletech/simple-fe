@@ -1,13 +1,13 @@
 import React, { useState, useMemo } from "react";
 import DataTable from "../../UI/DataTable";
 import type { ColumnsType } from "antd/es/table";
-import { Button } from "antd";
 import CreationCategory from "./componnets/CreationCategory";
 import UpdateCategory from "./componnets/UpdateCategory";
 import SearchFilter from "../../UI/Filter";
-import { MdEdit, MdDelete } from "react-icons/md";
+import { MdEdit, MdDelete, MdAdd } from "react-icons/md";
 import DeleteCategory from "./componnets/DeleteCategory";
 import { useModals } from "../../../hooks";
+import ButtonCus from "../../UI/ButtonCus/ButtonCus";
 
 interface CategoryData {
   key: string;
@@ -229,8 +229,6 @@ export default function Category() {
 
   return (
     <div className="space-y-4">
-      {/* Header */}
-      {/* Header & Controls */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-slate-900">
@@ -247,14 +245,14 @@ export default function Category() {
               className="w-full"
             />
           </div>
-          <Button
+          <ButtonCus
             type="primary"
-            size="large"
             onClick={modals.create.open}
-            className="bg-blue-600 hover:bg-blue-700 h-[40px] rounded-full w-full sm:w-auto"
+            className="w-full sm:w-auto flex items-center gap-[8px]"
           >
-            + Thêm danh mục
-          </Button>
+            <MdAdd size={20} />
+            <span className="pr-[8px]">Thêm mới</span>
+          </ButtonCus>
         </div>
       </div>
       {/* Table */}

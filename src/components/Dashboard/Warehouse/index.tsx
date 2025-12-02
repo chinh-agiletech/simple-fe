@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from "react";
 import DataTable from "../../UI/DataTable";
 import type { ColumnsType } from "antd/es/table";
-import { MdEdit, MdDelete } from "react-icons/md";
+import { MdEdit, MdDelete, MdAdd } from "react-icons/md";
 import SearchFilter from "../../UI/Filter";
+import ButtonCus from "../../UI/ButtonCus/ButtonCus";
 
 interface Warehouse {
   sku: string;
@@ -82,13 +83,22 @@ const WarehousePage = () => {
       <div className="">
         <div className="flex justify-between items-center mb-4">
           <div className="text-3xl font-semibold">Quản lý kho</div>
-          <div className="w-full md:w-72">
-            <SearchFilter
-              placeholder="Tìm kiếm danh mục..."
-              onSearch={setSearchQuery}
-              size="large"
-              className="w-full rounded-full"
-            />
+          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <div className="w-full md:w-72">
+              <SearchFilter
+                placeholder="Tìm kiếm danh mục..."
+                onSearch={setSearchQuery}
+                size="large"
+                className="w-full"
+              />
+            </div>
+            <ButtonCus
+              type="primary"
+              className="w-full sm:w-auto flex items-center gap-[8px]"
+            >
+              <MdAdd size={20} />
+              <span className="pr-[8px]">Thêm mới</span>
+            </ButtonCus>
           </div>
         </div>
         <DataTable<Warehouse> columns={columns} dataSource={filteredData} />
