@@ -7,6 +7,7 @@ import {
   MdOutlineInventory2,
   MdOutlineCategory,
   MdWarehouse,
+  MdPerson,
 } from "react-icons/md";
 
 export interface MenuItem {
@@ -46,7 +47,7 @@ export const menuItems: MenuItem[] = [
     id: "projects",
     label: "Dự án",
     icon: <MdConstruction size={22} />,
-    path: "/dashboard/orders",
+    path: "/dashboard/projects",
   },
   {
     id: "suppliers",
@@ -55,8 +56,14 @@ export const menuItems: MenuItem[] = [
     path: "/dashboard/customers",
   },
   {
+    id: "profile",
+    label: "Hồ sơ cá nhân",
+    icon: <MdPerson size={22} />,
+    path: "/dashboard/profile",
+  },
+  {
     id: "reports",
-    label: "Báo cáo",
+    label: "Báo cáo & Thống kê",
     icon: <MdAssessment size={22} />,
     path: "/dashboard/reports",
   },

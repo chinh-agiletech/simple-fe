@@ -8,6 +8,8 @@ import DashboardHome from "../components/Dashboard/DashboardHome";
 import Settings from "../components/Dashboard/Settings";
 import InventoryPage from "../components/Dashboard/Inventory";
 import WarehousePage from "../components/Dashboard/Warehouse";
+import ProjectList from "../components/Dashboard/Projects";
+import ProjectDetail from "../components/Dashboard/Projects/ProjectDetail";
 function Router() {
   const isAuthenticated = false;
   return (
@@ -41,9 +43,15 @@ function Router() {
             <Route path="inventory" element={<InventoryPage />} />
             <Route path="category" element={<Category />} />
             <Route path="warehouse" element={<WarehousePage />} />
+            <Route path="projects" element={<ProjectList />} />
+            <Route path="projects/:id" element={<ProjectDetail />} />
             <Route
               path="orders"
               element={<h1 className="text-2xl font-bold">Orders Page</h1>}
+            />
+            <Route
+              path="profile"
+              element={<h1 className="text-2xl font-bold">Profile Page</h1>}
             />
             <Route
               path="customers"
