@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, Button, Upload, Alert, Divider, message } from "antd";
 import {
   UploadOutlined,

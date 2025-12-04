@@ -1,5 +1,4 @@
 import { Button, Form, Input } from "antd";
-import React from "react";
 
 export default function ForgotPassword() {
   const [form] = Form.useForm();

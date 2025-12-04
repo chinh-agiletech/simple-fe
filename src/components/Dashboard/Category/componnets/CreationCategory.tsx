@@ -1,5 +1,4 @@
 import { Button, Form, Input, Modal } from "antd";
-import React from "react";
 import StatusSwitch from "../../../UI/Switch/StatusSwitch";
 
 export interface CreationCategoryProps {

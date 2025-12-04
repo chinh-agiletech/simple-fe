@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, Form, Input, Button, Upload, Avatar, Divider } from "antd";
 import { UserOutlined, CameraOutlined, SaveOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";

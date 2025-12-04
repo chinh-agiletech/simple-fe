@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, Button, Divider } from "antd";
 
 const SystemSettings = () => {
