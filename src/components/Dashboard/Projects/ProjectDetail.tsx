@@ -5,6 +5,7 @@ import OverviewTab from "./Tabs/OverviewTab";
 import ItemsTab from "./Tabs/ItemsTab";
 import MaterialsTab from "./Tabs/MaterialsTab";
 import StaffTab from "./Tabs/StaffTab";
+import ButtonCus from "../../UI/ButtonCus/ButtonCus";
 
 type TabType = "overview" | "items" | "materials" | "staff";
 
@@ -45,13 +46,13 @@ export default function ProjectDetail() {
     <div className="p-6">
       {/* Header */}
       <div className="mb-6">
-        <button
+        <ButtonCus
           onClick={() => navigate("/dashboard/projects")}
-          className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
+          className="flex items-center text-gray-900! mb-4 bg-none hover:font-bold min-w-[200px]"
         >
           <span className="mr-2">←</span>
           Quay lại danh sách
-        </button>
+        </ButtonCus>
         <h1 className="text-2xl font-bold text-gray-900">{project.name}</h1>
         <p className="text-sm text-gray-500 mt-1">{project.description}</p>
       </div>
@@ -60,11 +61,11 @@ export default function ProjectDetail() {
       <div className="border-b border-gray-200 mb-6">
         <nav className="-mb-px flex space-x-8">
           {tabs.map((tab) => (
-            <button
+            <ButtonCus
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`
-                py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2
+                py-4 px-1 border-b-2 font-semibold text-sm flex items-center justify-center gap-2 bg-none text-gray-900! border-none focus:border-b-orange-600! focus:text-orange-600!
                 ${
                   activeTab === tab.id
                     ? "border-blue-500 text-blue-600"
@@ -74,7 +75,7 @@ export default function ProjectDetail() {
             >
               <span>{tab.icon}</span>
               {tab.label}
-            </button>
+            </ButtonCus>
           ))}
         </nav>
       </div>

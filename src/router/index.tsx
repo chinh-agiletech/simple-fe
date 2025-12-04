@@ -10,6 +10,8 @@ import InventoryPage from "../components/Dashboard/Inventory";
 import WarehousePage from "../components/Dashboard/Warehouse";
 import ProjectList from "../components/Dashboard/Projects";
 import ProjectDetail from "../components/Dashboard/Projects/ProjectDetail";
+import ProfilePage from "../components/Dashboard/Profile";
+
 function Router() {
   const isAuthenticated = false;
   return (
@@ -49,10 +51,7 @@ function Router() {
               path="orders"
               element={<h1 className="text-2xl font-bold">Orders Page</h1>}
             />
-            <Route
-              path="profile"
-              element={<h1 className="text-2xl font-bold">Profile Page</h1>}
-            />
+            <Route path="profile" element={<ProfilePage />} />
             <Route
               path="customers"
               element={<h1 className="text-2xl font-bold">Customers Page</h1>}
