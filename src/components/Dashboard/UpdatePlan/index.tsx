@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { FaCheck, FaTimes, FaBolt, FaRocket, FaStar, FaChartBar, FaCubes, FaUsers, FaDatabase, FaChartLine, FaFileExport, FaComments, FaPlug, FaBolt as FaLightning } from 'react-icons/fa';
 import classNames from 'classnames';
 import ButtonCus from '../../UI/ButtonCus/ButtonCus';
@@ -64,7 +64,7 @@ const UpdatePlan = () => {
     }
   ];
 
-  const formatPrice = (price) => {
+  const formatPrice = (price: number) => {
     return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
       currency: 'VND'
@@ -212,7 +212,7 @@ const UpdatePlan = () => {
   );
 };
 
-const FeatureItem = ({ icon: Icon, text, enabled = true }) => (
+const FeatureItem = ({ icon: Icon, text = '', enabled = true }) => (
   <li className="flex items-start gap-3">
     <div className={classNames(
       'flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5',
