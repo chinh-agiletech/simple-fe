@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Card, Tabs } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import EditProfile from "./components/EditProfile";
-import ChangePassword from "./components/ChangePassword";
 
 type TabType = "profile" | "password";
 
@@ -19,16 +18,6 @@ export default function ProfilePage() {
         </span>
       ),
       children: <EditProfile />,
-    },
-    {
-      key: "password",
-      label: (
-        <span className="flex items-center gap-2">
-          <LockOutlined />
-          Đổi mật khẩu
-        </span>
-      ),
-      children: <ChangePassword />,
     },
   ];
 

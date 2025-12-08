@@ -24,7 +24,7 @@ interface AppearanceFormValues {
 const AppearanceSettings = () => {
   const [form] = Form.useForm<AppearanceFormValues>();
   const {setTheme} = useThemeContext();
-  
+
   const handleAppearanceUpdate = (values: AppearanceFormValues) => {
     setTheme(values.theme);
     message.success("Appearance settings saved!");
@@ -68,37 +68,6 @@ const AppearanceSettings = () => {
               <Option value="ja">日本語</Option>
               <Option value="zh">中文</Option>
             </Select>
-          </Form.Item>
-
-          <Divider />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Form.Item label="Date Format" name="dateFormat">
-              <Select size="large">
-                <Option value="MM/DD/YYYY">MM/DD/YYYY</Option>
-                <Option value="DD/MM/YYYY">DD/MM/YYYY</Option>
-                <Option value="YYYY-MM-DD">YYYY-MM-DD</Option>
-              </Select>
-            </Form.Item>
-
-            <Form.Item label="Time Format" name="timeFormat">
-              <Select size="large">
-                <Option value="12h">12 Hour</Option>
-                <Option value="24h">24 Hour</Option>
-              </Select>
-            </Form.Item>
-          </div>
-
-          <Divider />
-
-          <Form.Item label="Font Size" name="fontSize">
-            <Radio.Group>
-              <Space>
-                <Radio value="small">Small</Radio>
-                <Radio value="medium">Medium</Radio>
-                <Radio value="large">Large</Radio>
-              </Space>
-            </Radio.Group>
           </Form.Item>
 
           <Form.Item>
