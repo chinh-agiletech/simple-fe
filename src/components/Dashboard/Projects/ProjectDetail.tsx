@@ -1,20 +1,29 @@
-import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+/* eslint-disable react-hooks/set-state-in-effect */
+import { useState,useEffect } from "react";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { mockProjects } from "../../../data/mockProjects";
 import OverviewTab from "./Tabs/OverviewTab";
 import ItemsTab from "./Tabs/ItemsTab";
 import MaterialsTab from "./Tabs/MaterialsTab";
 import StaffTab from "./Tabs/StaffTab";
 import ButtonCus from "../../UI/ButtonCus/ButtonCus";
-
 type TabType = "overview" | "items" | "materials" | "staff";
 
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<TabType>("overview");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const defaultTab = (searchParams.get("tab") as TabType) || "overview";
+  const [activeTab, setActiveTab] = useState<TabType>(defaultTab);
 
   const project = mockProjects.find((p) => p.id === id);
+
+  useEffect(() => {
+    const urlTab = searchParams.get("tab") as TabType;
+    if (urlTab && urlTab !== activeTab) {
+      setActiveTab(urlTab);
+    }
+  }, [searchParams]);
 
   if (!project) {
     return (
@@ -63,18 +72,23 @@ export default function ProjectDetail() {
           {tabs.map((tab) => (
             <ButtonCus
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => {
+                setActiveTab(tab.id);
+                setSearchParams({ tab: tab.id });
+              }}
               className={`
-                py-4 px-1 border-b-2 font-semibold text-sm flex items-center justify-center gap-2 bg-none text-gray-900! border-none focus:border-b-orange-600! focus:text-orange-600!
+                py-4 px-1 border-b-2 font-semibold text-sm flex items-center justify-center gap-2 bg-none text-black!
                 ${
                   activeTab === tab.id
                     ? "border-blue-500 text-blue-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    : "border-transparent text-gray-500 hover:text-gray-700"
                 }
               `}
             >
               <span>{tab.icon}</span>
-              {tab.label}
+              <span className={
+                activeTab === tab.id ? 'focus:text-orange-500!' : ''
+              }>{tab.label}</span>
             </ButtonCus>
           ))}
         </nav>

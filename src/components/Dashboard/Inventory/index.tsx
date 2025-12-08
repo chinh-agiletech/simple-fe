@@ -15,7 +15,7 @@ import FormInventoryModal from "./components/FormInventoryModal";
 import DeleteInventoryModal from "./components/DeleteInventoryModal";
 import DataTable from "../../UI/DataTable/DataTable";
 import type { ColumnsType } from "antd/es/table";
-import ButtonCus from "../../UI/ButtonCus/ButtonCus";
+import ButtonCus from '../../UI/ButtonCus/ButtonCus';
 
 interface InventoryItem {
   id: string;
@@ -287,27 +287,24 @@ export default function InventoryPage() {
       key: "action",
       render: (_, record) => (
         <div className="flex items-center gap-2">
-          <button
+          <ButtonCus
             onClick={() => handleView(record)}
-            className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-150"
-            title="Xem chi tiết"
+            className="p-2 text-blue-600! bg-none! w-5! hover:bg-white!"
           >
             <MdRemoveRedEye size={18} />
-          </button>
-          <button
+          </ButtonCus>
+          <ButtonCus
             onClick={() => handleEdit(record)}
-            className="p-2 text-orange-600 hover:bg-orange-50 rounded-lg transition-colors duration-150"
-            title="Chỉnh sửa"
+            className="p-2 text-orange-600! bg-none! w-5!"
           >
             <MdEdit size={18} />
-          </button>
-          <button
+          </ButtonCus>
+          <ButtonCus
             onClick={() => handleDelete(record)}
-            className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-150"
-            title="Xóa"
+            className="p-2 text-red-600! bg-none! w-5!"
           >
             <MdDelete size={18} />
-          </button>
+          </ButtonCus>
         </div>
       ),
     },

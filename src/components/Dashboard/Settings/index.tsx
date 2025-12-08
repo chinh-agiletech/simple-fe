@@ -13,6 +13,8 @@ import DataManagement from "./components/DataManagement";
 import SecuritySettings from "./components/SecuritySettings";
 import AppearanceSettings from "./components/AppearanceSettings";
 import SystemSettings from "./components/SystemSettings";
+import UpdatePlan from './../UpdatePlan/index';
+import { classNames } from 'classnames';
 
 const Settings = () => {
   const tabItems = [
@@ -76,6 +78,17 @@ const Settings = () => {
       ),
       children: <SystemSettings />,
     },
+    {
+      key: "plan",
+      label: (
+        <span className="flex items-center gap-2">
+          <SettingOutlined />
+          Update Plan
+        </span>
+        
+      ),
+      children: <UpdatePlan />,
+    }
   ];
 
   return (

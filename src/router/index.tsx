@@ -11,6 +11,7 @@ import WarehousePage from "../components/Dashboard/Warehouse";
 import ProjectList from "../components/Dashboard/Projects";
 import ProjectDetail from "../components/Dashboard/Projects/ProjectDetail";
 import ProfilePage from "../components/Dashboard/Profile";
+import UpdatePlan from './../components/Dashboard/UpdatePlan/index';
 
 function Router() {
   const isAuthenticated = false;
@@ -57,6 +58,7 @@ function Router() {
               element={<h1 className="text-2xl font-bold">Customers Page</h1>}
             />
             <Route path="settings" element={<Settings />} />
+            <Route path="updateplans" element={<UpdatePlan />} />
           </Route>
         </Route>
       </Routes>
