@@ -1,33 +1,20 @@
 import { Tabs } from "antd";
 import {
-  UserOutlined,
   BellOutlined,
   SafetyOutlined,
   DatabaseOutlined,
   BgColorsOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import ProfileSettings from "./components/ProfileSettings";
 import NotificationSettings from "./components/NotificationSettings";
 import DataManagement from "./components/DataManagement";
 import SecuritySettings from "./components/SecuritySettings";
 import AppearanceSettings from "./components/AppearanceSettings";
 import SystemSettings from "./components/SystemSettings";
 import UpdatePlan from './../UpdatePlan/index';
-import { classNames } from 'classnames';
 
 const Settings = () => {
   const tabItems = [
-    {
-      key: "profile",
-      label: (
-        <span className="flex items-center gap-2">
-          <UserOutlined />
-          Profile
-        </span>
-      ),
-      children: <ProfileSettings />,
-    },
     {
       key: "notifications",
       label: (

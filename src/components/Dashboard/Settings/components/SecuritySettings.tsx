@@ -5,11 +5,11 @@ import {
   Button,
   Switch,
   Slider,
-  Alert,
   Divider,
   message,
 } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
+import { useState } from 'react';
 
 interface SecurityFormValues {
   currentPassword: string;
@@ -20,6 +20,7 @@ interface SecurityFormValues {
 
 const SecuritySettings = () => {
   const [form] = Form.useForm<SecurityFormValues>();
+  const [isAutoLogout, setIsAutoLogout] = useState(false);
 
   const handleSecurityUpdate = (values: SecurityFormValues) => {
     console.log("Security updated:", values);
@@ -31,14 +32,6 @@ const SecuritySettings = () => {
       <div className="max-w-2xl">
         <h3 className="text-lg font-semibold mb-4">Security Settings</h3>
         <Form form={form} layout="vertical" onFinish={handleSecurityUpdate}>
-          <Alert
-            message="Keep your account secure"
-            description="We recommend using a strong password and enabling two-factor authentication"
-            type="info"
-            showIcon
-            className="mb-6"
-          />
-
           <h4 className="font-medium mb-3">Change Password</h4>
           <Form.Item
             label="Current Password"
@@ -47,7 +40,7 @@ const SecuritySettings = () => {
               { required: true, message: "Please input current password!" },
             ]}
           >
-            <Input.Password placeholder="Enter current password" />
+            <Input.Password placeholder="Enter current password" className="size-10" />
           </Form.Item>
 
           <Form.Item
@@ -58,7 +51,7 @@ const SecuritySettings = () => {
               { min: 8, message: "Password must be at least 8 characters!" },
             ]}
           >
-            <Input.Password placeholder="Enter new password" />
+            <Input.Password placeholder="Enter new password" className="size-10" />
           </Form.Item>
 
           <Form.Item
@@ -77,7 +70,7 @@ const SecuritySettings = () => {
               }),
             ]}
           >
-            <Input.Password placeholder="Confirm new password" />
+            <Input.Password placeholder="Confirm new password" className="size-10" />
           </Form.Item>
 
           <Divider />
@@ -104,17 +97,20 @@ const SecuritySettings = () => {
                   Automatically logout after inactivity
                 </p>
               </div>
-              <Switch defaultChecked />
+              <Switch  
+                checked={isAutoLogout}
+                onChange={(checked) => setIsAutoLogout(checked)} />
             </div>
-
+            {!isAutoLogout ? null : (
             <Form.Item label="Session Timeout (minutes)" name="timeout">
-              <Slider
-                min={5}
-                max={120}
-                defaultValue={30}
-                marks={{ 5: "5m", 30: "30m", 60: "1h", 120: "2h" }}
-              />
-            </Form.Item>
+              
+                  <Slider
+                  min={5}
+                  max={120}
+                  defaultValue={30}
+                  marks={{ 5: "5m", 30: "30m", 60: "1h", 120: "2h" }}
+                />
+            </Form.Item>)}
           </div>
 
           <Button

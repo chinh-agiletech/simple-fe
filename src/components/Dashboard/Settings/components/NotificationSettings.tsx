@@ -46,88 +46,90 @@ const NotificationSettings = () => {
             frequency: "daily",
           }}
         >
-          <div className="space-y-6">
-            <div>
-              <h4 className="font-medium mb-3">Notification Channels</h4>
-              <div className="space-y-4">
-                <Form.Item name="emailNotifications" valuePropName="checked">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-medium">Email Notifications</p>
-                      <p className="text-sm text-gray-500">
-                        Receive notifications via email
-                      </p>
+          <div className="">
+            <div className="">
+              <div className="flex justify-between">
+                <h4 className="font-medium mb-3 min-w-[400px] flex items-center justify-center">Notification Channels</h4>
+                <div className="flex flex-col">
+                  <Form.Item name="emailNotifications" valuePropName="checked">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="font-medium">Email Notifications</p>
+                        <p className="text-sm text-gray-500">
+                          Receive notifications via email
+                        </p>
+                      </div>
+                      <Switch />
                     </div>
-                    <Switch />
-                  </div>
-                </Form.Item>
+                  </Form.Item>
 
-                <Form.Item name="pushNotifications" valuePropName="checked">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-medium">Push Notifications</p>
-                      <p className="text-sm text-gray-500">
-                        Receive push notifications in browser
-                      </p>
+                  <Form.Item name="pushNotifications" valuePropName="checked">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="font-medium">Push Notifications</p>
+                        <p className="text-sm text-gray-500">
+                          Receive push notifications in browser
+                        </p>
+                      </div>
+                      <Switch />
                     </div>
-                    <Switch />
-                  </div>
-                </Form.Item>
+                  </Form.Item>
 
-                <Form.Item name="smsNotifications" valuePropName="checked">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-medium">SMS Notifications</p>
-                      <p className="text-sm text-gray-500">
-                        Receive notifications via SMS
-                      </p>
+                  <Form.Item name="smsNotifications" valuePropName="checked">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="font-medium">SMS Notifications</p>
+                        <p className="text-sm text-gray-500">
+                          Receive notifications via SMS
+                        </p>
+                      </div>
+                      <Switch />
                     </div>
-                    <Switch />
-                  </div>
-                </Form.Item>
+                  </Form.Item>
+                </div>
               </div>
-            </div>
 
-            <Divider />
+              <Divider />
 
-            <div>
-              <h4 className="font-medium mb-3">Notification Types</h4>
-              <div className="space-y-4">
-                <Form.Item name="orderUpdates" valuePropName="checked">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-medium">Order Updates</p>
-                      <p className="text-sm text-gray-500">
-                        Get notified about order status changes
-                      </p>
+              <div className="flex justify-between">
+                <h4 className="font-medium mb-3 min-w-[400px] flex items-center justify-center">Notification Types</h4>
+                <div className="flex flex-col">
+                  <Form.Item name="orderUpdates" valuePropName="checked">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="font-medium">Order Updates</p>
+                        <p className="text-sm text-gray-500">
+                          Get notified about order status changes
+                        </p>
+                      </div>
+                      <Switch defaultChecked />
                     </div>
-                    <Switch defaultChecked />
-                  </div>
-                </Form.Item>
+                  </Form.Item>
 
-                <Form.Item name="promotions" valuePropName="checked">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-medium">Promotions & Offers</p>
-                      <p className="text-sm text-gray-500">
-                        Receive promotional emails and special offers
-                      </p>
+                  <Form.Item name="promotions" valuePropName="checked">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="font-medium">Promotions & Offers</p>
+                        <p className="text-sm text-gray-500">
+                          Receive promotional emails and special offers
+                        </p>
+                      </div>
+                      <Switch />
                     </div>
-                    <Switch />
-                  </div>
-                </Form.Item>
+                  </Form.Item>
 
-                <Form.Item name="newsletter" valuePropName="checked">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-medium">Newsletter</p>
-                      <p className="text-sm text-gray-500">
-                        Subscribe to our weekly newsletter
-                      </p>
+                  <Form.Item name="newsletter" valuePropName="checked">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="font-medium">Newsletter</p>
+                        <p className="text-sm text-gray-500">
+                          Subscribe to our weekly newsletter
+                        </p>
+                      </div>
+                      <Switch defaultChecked />
                     </div>
-                    <Switch defaultChecked />
-                  </div>
-                </Form.Item>
+                  </Form.Item>
+                </div>
               </div>
             </div>
 

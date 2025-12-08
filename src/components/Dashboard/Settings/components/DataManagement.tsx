@@ -1,4 +1,4 @@
-import { Card, Button, Upload, Alert, Divider, message } from "antd";
+import { Card, Button, Upload, Alert, message } from "antd";
 import {
   UploadOutlined,
   DownloadOutlined,
@@ -7,6 +7,7 @@ import {
   FilePdfOutlined,
 } from "@ant-design/icons";
 import type { UploadProps } from "antd";
+import ButtonCus from '../../../UI/ButtonCus/ButtonCus';
 
 const DataManagement = () => {
   // Handle data import
@@ -38,21 +39,22 @@ const DataManagement = () => {
   return (
     <div className="space-y-4">
       {/* Import Data */}
-      <Card title="Import Data" className="shadow-sm">
+      <Card title="Import Data" className="shadow-sm mb-4!">
         <Alert
           message="Import your data from CSV, Excel, or JSON files"
           type="info"
           showIcon
-          className="mb-[8px]"
+          className="mb-2"
         />
         <Upload
           accept=".csv,.xlsx,.xls,.json"
           onChange={handleImport}
           maxCount={1}
         >
-          <Button icon={<UploadOutlined />} size="large">
+          <ButtonCus className="flex justify-center gap-2 border rounded-[14px]! mt-2 font-400 hover:bg-orange-700!">
+            <UploadOutlined />
             Select File to Import
-          </Button>
+          </ButtonCus>
         </Upload>
         <p className="text-sm text-gray-500 mt-2">
           Supported formats: CSV, Excel (.xlsx, .xls), JSON
@@ -60,13 +62,7 @@ const DataManagement = () => {
       </Card>
 
       {/* Export Data */}
-      <Card title="Export Data" className="shadow-sm">
-        <Alert
-          message="Download your data in various formats"
-          type="info"
-          showIcon
-          className="mb-4"
-        />
+      <Card title="Export Data" className="shadow-sm mb-4!">
         <div className="flex flex-wrap gap-3">
           <Button
             icon={<FileExcelOutlined />}
@@ -100,14 +96,8 @@ const DataManagement = () => {
       </Card>
 
       {/* Backup & Restore */}
-      <Card title="Backup & Restore" className="shadow-sm">
-        <Alert
-          message="Create backups of your data and restore when needed"
-          type="warning"
-          showIcon
-          className="mb-4"
-        />
-        <div className="space-y-4">
+      <Card title="Backup & Restore" className="shadow-sm  mb-4!">
+        <div className="space-y-4 flex justify-between">
           <div>
             <h4 className="font-medium mb-2">Create Backup</h4>
             <Button
@@ -120,8 +110,6 @@ const DataManagement = () => {
             </Button>
             <p className="text-sm text-gray-500 mt-2">Last backup: Never</p>
           </div>
-
-          <Divider />
 
           <div>
             <h4 className="font-medium mb-2">Restore from Backup</h4>
@@ -139,12 +127,6 @@ const DataManagement = () => {
 
       {/* Clear Data */}
       <Card title="Clear Data" className="shadow-sm">
-        <Alert
-          message="Permanently delete all data"
-          type="error"
-          showIcon
-          className="mb-4"
-        />
         <Button danger size="large">
           Clear All Data
         </Button>
