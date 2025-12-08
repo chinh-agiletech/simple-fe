@@ -9,6 +9,7 @@ import {
   message,
 } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
+import { useThemeContext } from '../../../../context/ThemeContext';
 
 const { Option } = Select;
 
@@ -22,9 +23,10 @@ interface AppearanceFormValues {
 
 const AppearanceSettings = () => {
   const [form] = Form.useForm<AppearanceFormValues>();
-
+  const {setTheme} = useThemeContext();
+  
   const handleAppearanceUpdate = (values: AppearanceFormValues) => {
-    console.log("Appearance updated:", values);
+    setTheme(values.theme);
     message.success("Appearance settings saved!");
   };
 
