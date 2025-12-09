@@ -245,7 +245,7 @@ export default function ProjectList() {
               placeholder="Tìm kiếm dự án..."
               onSearch={setSearchQuery}
               size="large"
-              className="w-full"
+              className="w-full text-black!"
             />
           </div>
           <ButtonCus

@@ -1,4 +1,5 @@
 import React from "react";
+import ButtonCus from './../../UI/ButtonCus/ButtonCus';
 import {
   MdConstruction,
   MdBusiness,
@@ -98,9 +99,9 @@ export default function DashboardHome() {
             Quản lý vật tư xây dựng hiệu quả và chuyên nghiệp
           </p>
         </div>
-        <button className="px-4 py-2 bg-linear-to-r from-orange-600 to-orange-500 text-white rounded-lg font-medium hover:shadow-lg transition-all duration-200 hover:scale-105">
+        <ButtonCus className="max-w-[120px]">
           Xuất báo cáo
-        </button>
+        </ButtonCus>
       </div>
 
       {/* Stats Grid */}
