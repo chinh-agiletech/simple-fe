@@ -1,5 +1,7 @@
 import React from "react";
-import ButtonCus from './../../UI/ButtonCus/ButtonCus';
+import TextField from "../../UI/TextField/TextField";
+import classNames from "classnames";
+import ButtonCus from "../../UI/ButtonCus/ButtonCus";
 import {
   MdConstruction,
   MdBusiness,
@@ -28,21 +30,33 @@ function StatCard({
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow duration-200">
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <p className="text-sm font-medium text-slate-600 mb-1">{title}</p>
-          <h3 className="text-3xl font-bold text-slate-900 mb-2">{value}</h3>
+          <TextField className="text-sm font-medium text-slate-600 mb-1">
+            {title}
+          </TextField>
+          <TextField
+            element="h3"
+            className="text-3xl font-bold text-slate-900 mb-2"
+          >
+            {value}
+          </TextField>
           <div className="flex items-center gap-1">
-            <span
+            <TextField
               className={`text-sm font-semibold ${
                 isPositive ? "text-green-600" : "text-red-600"
               }`}
             >
               {isPositive ? "↑" : "↓"} {change}
-            </span>
-            <span className="text-xs text-slate-500">vs last month</span>
+            </TextField>
+            <TextField className="text-xs text-slate-500">
+              vs last month
+            </TextField>
           </div>
         </div>
         <div
-          className={`w-14 h-14 rounded-lg ${color} flex items-center justify-center text-white shadow-lg`}
+          className={classNames(
+            "w-14 h-14 rounded-lg flex items-center justify-center text-white shadow-lg",
+            color
+          )}
         >
           {icon}
         </div>
@@ -92,16 +106,14 @@ export default function DashboardHome() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">
+          <TextField element="h1" className="text-3xl font-bold text-slate-900">
             Tổng quan vật tư
-          </h1>
-          <p className="text-slate-600 mt-1">
+          </TextField>
+          <TextField className="text-slate-600 mt-1">
             Quản lý vật tư xây dựng hiệu quả và chuyên nghiệp
-          </p>
+          </TextField>
         </div>
-        <ButtonCus className="max-w-[120px]">
-          Xuất báo cáo
-        </ButtonCus>
+        <ButtonCus className="max-w-[120px]">Xuất báo cáo</ButtonCus>
       </div>
 
       {/* Stats Grid */}
@@ -112,44 +124,53 @@ export default function DashboardHome() {
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <TextField
+          element="h2"
+          className="text-xl font-bold text-slate-900 mb-4"
+        >
           Thao tác nhanh
-        </h2>
+        </TextField>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <button className="p-4 border-2 border-slate-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-all duration-200 text-left group">
+          <ButtonCus className="p-4 border-2 border-slate-200 rounded-lg bg-none w-full hover:border-orange-500 hover:bg-orange-50 transition-all duration-200 text-left group">
             <div className="text-2xl mb-2">🧱</div>
-            <h3 className="font-semibold text-slate-900 group-hover:text-orange-600">
+            <TextField className="font-semibold text-slate-900 group-hover:text-orange-600">
               Thêm vật tư
-            </h3>
-            <p className="text-sm text-slate-600 mt-1">
+            </TextField>
+            <TextField className="text-sm text-slate-600 mt-1">
               Nhập vật tư xây dựng mới
-            </p>
-          </button>
-          <button className="p-4 border-2 border-slate-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 text-left group">
+            </TextField>
+          </ButtonCus>
+          <ButtonCus className="p-4 border-2 border-slate-200 rounded-lg bg-none w-full hover:border-blue-500 hover:bg-blue-50 transition-all duration-200 text-left group">
             <div className="text-2xl mb-2">🏗️</div>
-            <h3 className="font-semibold text-slate-900 group-hover:text-blue-600">
+            <TextField
+              element="h3"
+              className="font-semibold text-slate-900 group-hover:text-blue-600"
+            >
               Dự án mới
-            </h3>
-            <p className="text-sm text-slate-600 mt-1">
+            </TextField>
+            <TextField className="text-sm text-slate-600 mt-1">
               Tạo dự án xây dựng mới
-            </p>
-          </button>
-          <button className="p-4 border-2 border-slate-200 rounded-lg hover:border-slate-500 hover:bg-slate-50 transition-all duration-200 text-left group">
+            </TextField>
+          </ButtonCus>
+          <ButtonCus className="p-4 border-2 border-slate-200 rounded-lg hover:border-slate-500 bg-none w-full hover:bg-slate-50 transition-all duration-200 text-left group">
             <div className="text-2xl mb-2">🏭</div>
-            <h3 className="font-semibold text-slate-900 group-hover:text-slate-600">
+            <TextField className="font-semibold text-slate-900 group-hover:text-slate-600">
               Nhà cung cấp
-            </h3>
-            <p className="text-sm text-slate-600 mt-1">
+            </TextField>
+            <TextField className="text-sm text-slate-600 mt-1">
               Đăng ký nhà cung cấp mới
-            </p>
-          </button>
+            </TextField>
+          </ButtonCus>
         </div>
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <TextField
+          element="h2"
+          className="text-xl font-bold text-slate-900 mb-4"
+        >
           Hoạt động gần đây
-        </h2>
+        </TextField>
         <div className="space-y-4">
           {[
             {
@@ -181,8 +202,12 @@ export default function DashboardHome() {
                 className={`w-2 h-2 rounded-full ${activity.color.replace("100", "500")}`}
               ></div>
               <div className="flex-1">
-                <p className="font-medium text-slate-900">{activity.action}</p>
-                <p className="text-sm text-slate-500">{activity.time}</p>
+                <TextField element="p" className="font-medium text-slate-900">
+                  {activity.action}
+                </TextField>
+                <TextField element="p" className="text-sm text-slate-500">
+                  {activity.time}
+                </TextField>
               </div>
             </div>
           ))}

@@ -2,9 +2,9 @@
 import { createContext, useContext } from "react";
 import { useTheme } from "../hooks/useTheme";
 
-const ThemeContext = createContext<any>(null);
+const ThemeContext = createContext<object | null>(null);
 
-export const ThemeProvider = ({ children }) => {
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const themeState = useTheme();
 
   return (
