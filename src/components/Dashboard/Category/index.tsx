@@ -8,6 +8,7 @@ import { MdEdit, MdDelete, MdAdd } from "react-icons/md";
 import DeleteCategory from "./componnets/DeleteCategory";
 import { useModals } from "../../../hooks";
 import ButtonCus from "../../UI/ButtonCus/ButtonCus";
+import TextField from '../../UI/TextField/TextField';
 
 interface CategoryData {
   key: string;
@@ -106,7 +107,9 @@ export default function Category() {
       key: "code",
       width: 150,
       render: (text) => (
-        <span className="font-semibold text-slate-700">{text}</span>
+        <TextField element="span" className="font-semibold text-slate-700">
+          {text}
+        </TextField>
       ),
     },
     {
@@ -114,14 +117,20 @@ export default function Category() {
       dataIndex: "name",
       key: "name",
       render: (text) => (
-        <span className="font-bold text-slate-900">{text}</span>
+        <TextField element="span" className="font-bold text-slate-900">
+          {text}
+        </TextField>
       ),
     },
     {
       title: "Mô tả",
       dataIndex: "description",
       key: "description",
-      render: (text) => <span className="text-slate-600">{text}</span>,
+      render: (text) => (
+        <TextField element="span" className="text-slate-600">
+          {text}
+        </TextField>
+      ),
     },
     {
       title: "Số lượng vật tư",
@@ -130,9 +139,12 @@ export default function Category() {
       align: "center",
       width: 150,
       render: (count) => (
-        <span className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">
+        <TextField
+          element="span"
+          className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium"
+        >
           {count} sản phẩm
-        </span>
+        </TextField>
       ),
     },
     {
@@ -142,7 +154,7 @@ export default function Category() {
       width: 120,
       align: "center",
       render: (status) => (
-        <span
+        <TextField
           className={`px-3 py-1 rounded-full text-xs font-medium ${
             status === "active"
               ? "bg-green-100 text-green-700"
@@ -150,7 +162,7 @@ export default function Category() {
           }`}
         >
           {status === "active" ? "Hoạt động" : "Ngừng KD"}
-        </span>
+        </TextField>
       ),
     },
     {
@@ -159,10 +171,9 @@ export default function Category() {
       width: 120,
       align: "center" as const,
       render: (_, record) => (
-        <div className="flex gap-2 justify-center">
-          <button
-            className="p-2 hover:bg-blue-50 rounded-lg transition-all duration-200 group"
-            title="Chỉnh sửa"
+        <div className="flex gap-2 justify-between max-w-[100px]">
+          <ButtonCus
+            className="p-2 hover:bg-blue-200 rounded-lg bg-none transition-all duration-200 flex items-center justify-center"
             onClick={() => {
               setSelectedCategory(record);
               modals.update.open();
@@ -172,17 +183,16 @@ export default function Category() {
               className="text-blue-600 group-hover:scale-110 transition-transform"
               size={18}
             />
-          </button>
-          <button
-            className="p-2 hover:bg-red-50 rounded-lg transition-all duration-200 group"
-            title="Xóa"
+          </ButtonCus>
+          <ButtonCus
+            className="p-2 hover:bg-red-200 rounded-lg bg-none transition-all duration-200  flex items-center justify-center"
             onClick={modals.delete.open}
           >
             <MdDelete
               className="text-red-600 group-hover:scale-110 transition-transform"
               size={18}
             />
-          </button>
+          </ButtonCus>
         </div>
       ),
     },
@@ -231,9 +241,9 @@ export default function Category() {
     <div className="space-y-4">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-slate-900">
+          <TextField element="h1" className="text-2xl md:text-3xl font-bold text-slate-900">
             Quản lý danh mục
-          </h1>
+          </TextField>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">

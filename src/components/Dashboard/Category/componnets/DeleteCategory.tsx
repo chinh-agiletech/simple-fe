@@ -1,4 +1,6 @@
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
+import TextField from "../../../UI/TextField/TextField";
+import ButtonCus from "../../../UI/ButtonCus/ButtonCus";
 
 export interface DelCategoryProps {
   open: boolean;
@@ -29,26 +31,23 @@ const DeleteCategory = ({ open, onClose, onSubmit }: DelCategoryProps) => {
       width={400}
     >
       <div className="my-[20px]">
-        <p className="text-slate-700">
+        <TextField className="text-slate-700">
           Bạn có chắc chắn muốn xóa danh mục này không?
-        </p>
+        </TextField>
       </div>
       <div className="flex justify-end gap-[8px]">
-        <Button
-          type="default"
+        <ButtonCus
           onClick={handleCloseModal}
-          className="rounded-full h-[40px] px-6"
+          className="h-[40px] w-[60px]! bg-none text-black! border border-gray-300 rounded-md!"
         >
           Hủy
-        </Button>
-        <Button
-          type="primary"
-          danger
+        </ButtonCus>
+        <ButtonCus
           onClick={handleConfirmDelete}
-          className="rounded-full h-[40px] px-6"
+          className="h-[40px] w-[60px]! rounded-md!"
         >
           Xóa
-        </Button>
+        </ButtonCus>
       </div>
     </Modal>
   );

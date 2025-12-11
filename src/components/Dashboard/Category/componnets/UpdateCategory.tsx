@@ -1,6 +1,7 @@
-import { Button, Form, Input, Modal } from "antd";
+import { Form, Input, Modal } from "antd";
 import React, { useEffect } from "react";
 import StatusSwitch from "../../../UI/Switch/StatusSwitch";
+import ButtonCus from "../../../UI/ButtonCus/ButtonCus";
 
 interface CategoryData {
   key: string;
@@ -97,12 +98,15 @@ const UpdateCategory: React.FC<UpdateCategoryProps> = ({
         </Form.Item>
 
         <div className="w-full flex justify-end gap-3">
-          <Button onClick={handleCancel} className="h-[40px]">
+          <ButtonCus
+            onClick={handleCancel}
+            className="h-[40px] w-[60px]! rounded-md! border border-gray-300 bg-none! text-black!"
+          >
             Hủy
-          </Button>
-          <Button type="primary" htmlType="submit" className="h-[40px]">
+          </ButtonCus>
+          <ButtonCus type="primary" className="h-[40px] w-[80px]! rounded-md!">
             Cập nhật
-          </Button>
+          </ButtonCus>
         </div>
       </Form>
     </Modal>

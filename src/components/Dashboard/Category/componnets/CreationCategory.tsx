@@ -1,5 +1,6 @@
-import { Button, Form, Input, Modal } from "antd";
+import { Form, Input, Modal } from "antd";
 import StatusSwitch from "../../../UI/Switch/StatusSwitch";
+import ButtonCus from "../../../UI/ButtonCus/ButtonCus";
 
 export interface CreationCategoryProps {
   open: boolean;
@@ -78,12 +79,15 @@ export default function CreationCategory({
         </Form.Item>
 
         <div className="w-full flex justify-end gap-3">
-          <Button onClick={handleCancel} className="h-[40px]">
+          <ButtonCus
+            onClick={handleCancel}
+            className="h-[40px] w-[60px]! bg-none text-black! border border-gray-300 rounded-md!"
+          >
             Hủy
-          </Button>
-          <Button type="primary" htmlType="submit" className="h-[40px]">
+          </ButtonCus>
+          <ButtonCus type="primary" className="h-[40px] w-[80px]! rounded-md!">
             Thêm mới
-          </Button>
+          </ButtonCus>
         </div>
       </Form>
     </Modal>
