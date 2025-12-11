@@ -1,4 +1,5 @@
 import { MdClose, MdWarehouse, MdBusiness, MdLocationOn } from "react-icons/md";
+import TextField from '../../../UI/TextField/TextField';
 
 interface InventoryItem {
   id: string;
@@ -76,11 +77,11 @@ export default function ViewInventoryModal({
         <div className="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
           {/* Status Badge */}
           <div className="mb-6">
-            <span
+            <TextField
               className={`inline-block px-4 py-2 rounded-full text-sm font-semibold border ${statusInfo.color}`}
             >
               {statusInfo.label}
-            </span>
+            </TextField>
           </div>
 
           {/* Main Info Grid */}

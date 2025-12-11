@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import NumberInput from "../../../UI/NumberInput/NumberInput";
+import TextField from "../../../UI/TextField/TextField";
 
 interface InventoryItem {
   id: string;
@@ -120,9 +121,9 @@ export default function FormInventoryModal({
 
             {/* Category */}
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <TextField className="block text-sm font-semibold text-slate-700 mb-2">
                 Danh mục <span className="text-red-500">*</span>
-              </label>
+              </TextField>
               <select
                 name="category"
                 value={formData.category}
@@ -141,9 +142,9 @@ export default function FormInventoryModal({
 
             {/* Unit */}
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <TextField className="block text-sm font-semibold text-slate-700 mb-2">
                 Đơn vị <span className="text-red-500">*</span>
-              </label>
+              </TextField>
               <input
                 type="text"
                 name="unit"
@@ -196,9 +197,9 @@ export default function FormInventoryModal({
 
             {/* Supplier */}
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <TextField className="block text-sm font-semibold text-slate-700 mb-2">
                 Nhà cung cấp <span className="text-red-500">*</span>
-              </label>
+              </TextField>
               <input
                 type="text"
                 name="supplier"
@@ -212,9 +213,9 @@ export default function FormInventoryModal({
 
             {/* Location */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <TextField className="block text-sm font-semibold text-slate-700 mb-2">
                 Vị trí kho <span className="text-red-500">*</span>
-              </label>
+              </TextField>
               <input
                 type="text"
                 name="location"

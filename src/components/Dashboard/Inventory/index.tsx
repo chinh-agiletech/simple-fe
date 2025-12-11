@@ -15,7 +15,8 @@ import FormInventoryModal from "./components/FormInventoryModal";
 import DeleteInventoryModal from "./components/DeleteInventoryModal";
 import DataTable from "../../UI/DataTable/DataTable";
 import type { ColumnsType } from "antd/es/table";
-import ButtonCus from '../../UI/ButtonCus/ButtonCus';
+import ButtonCus from "../../UI/ButtonCus/ButtonCus";
+import TextField from '../../UI/TextField/TextField';
 
 interface InventoryItem {
   id: string;
@@ -163,24 +164,33 @@ export default function InventoryPage() {
     switch (status) {
       case "in-stock":
         return (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+          <TextField
+            element="span"
+            className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700"
+          >
             <MdCheckCircle size={14} />
             Còn hàng
-          </span>
+          </TextField>
         );
       case "low-stock":
         return (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+          <TextField
+            element="span"
+            className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700"
+          >
             <MdWarning size={14} />
             Sắp hết
-          </span>
+          </TextField>
         );
       case "out-of-stock":
         return (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">
+          <TextField
+            element="span"
+            className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700"
+          >
             <MdWarning size={14} />
             Hết hàng
-          </span>
+          </TextField>
         );
       default:
         return null;
@@ -315,23 +325,25 @@ export default function InventoryPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-slate-900">Quản lý vật tư</h1>
-          <p className="text-slate-600 mt-1">
+          <TextField element="h1" className="text-3xl font-bold text-slate-900">
+            Quản lý vật tư
+          </TextField>
+          <TextField className="text-slate-600 mt-1">
             Theo dõi và quản lý vật tư xây dựng trong kho
-          </p>
+          </TextField>
         </div>
         <div className="flex gap-3">
-          <button className="px-4 py-2 bg-white border border-slate-300 text-slate-700 rounded-lg font-medium hover:bg-slate-50 transition-all duration-200 flex items-center gap-2">
+          <ButtonCus className="px-4 py-2 bg-white border bg-none border-slate-300 text-slate-700! rounded-lg font-medium hover:bg-slate-50 transition-all duration-200 flex justify-center items-center gap-2">
             <MdFileDownload size={20} />
-            Xuất Excel
-          </button>
+            <TextField className="font-400!">Xuất File Excel</TextField>
+          </ButtonCus>
           <ButtonCus
             type="primary"
             onClick={handleCreate}
             className="w-full sm:w-auto flex items-center gap-[8px]"
           >
             <MdAdd size={20} />
-            <span className="pr-[8px]">Thêm mới</span>
+            <TextField element="span" className="pr-[8px]">Thêm mới</TextField>
           </ButtonCus>
         </div>
       </div>
